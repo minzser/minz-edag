@@ -1,0 +1,43 @@
+<div class="example-container">
+    <label>Search/Filter By: </label>
+    <mat-radio-group [(ngModel)]="selectedFilter">
+        <mat-radio-button value="all" (change)="onSelectionChange('all')">All</mat-radio-button>
+        <mat-radio-button value="brand" (change)="onSelectionChange('brand')">Brand</mat-radio-button>
+    </mat-radio-group>
+</div>
+
+<mat-form-field *ngIf="selectedFilter === 'all'">
+    <input matInput (keyup)="applyFilter($event)" placeholder="Search for anything (ID/Brand/Type)">
+</mat-form-field>
+
+<mat-form-field *ngIf="selectedFilter === 'brand'">
+    <input matInput (keyup)="applyFilterBrand($event)" placeholder="Filter By Brand">
+</mat-form-field>
+
+
+<div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+
+        <!-- ID Column -->
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+            <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+        </ng-container>
+
+        <!-- Brand Column -->
+        <ng-container matColumnDef="brand">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Brand </th>
+            <td mat-cell *matCellDef="let row"> {{row.brand}} </td>
+        </ng-container>
+
+        <!-- Type Column -->
+        <ng-container matColumnDef="type">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Type </th>
+            <td mat-cell *matCellDef="let row"> {{row.type}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+</div>
