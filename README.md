@@ -2,7 +2,7 @@
 
 This is the repository for Muhaimin's Case Study (Assessment) for EDAG.
 
-You can see [live demo here](https://github.com/pandao/editor.md "live demo").
+You can see [live demo here](http://edag.ahmadmuhaimin.com/ "live demo").
 
 ----
 
